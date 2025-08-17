@@ -22,7 +22,6 @@ A comprehensive machine learning project analyzing the famous Titanic dataset to
 - [Key Insights](#key-insights)
 - [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
 
 ## 🎯 Overview
 
@@ -80,8 +79,8 @@ Titanic-Dataset/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/titanic-ml-analysis.git
-   cd titanic-ml-analysis
+   git clone https://github.com/dustinober1/Titanic-Dataset.git
+   cd Titanic-Dataset
    ```
 
 2. **Create virtual environment** (recommended)
