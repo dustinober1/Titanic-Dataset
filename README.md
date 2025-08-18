@@ -55,6 +55,13 @@ This project provides a complete end-to-end machine learning solution for predic
 - **Clean, documented code** following best practices
 - **Modular design** for easy extension
 
+### 📊 Advanced Analytics Features 🆕
+- **Statistical rigor** with hypothesis testing and confidence intervals
+- **Social network analysis** of passenger relationships and group dynamics
+- **Ensemble learning** with 15+ ML algorithms and advanced model selection
+- **Interactive dashboard** for dynamic data exploration
+- **Model interpretability** with feature importance and stability analysis
+
 ## 📁 Project Structure
 
 ```
@@ -108,11 +115,31 @@ Titanic-Dataset/
 
 ### Required Dependencies
 ```
+# Core libraries
 pandas>=1.3.0
 numpy>=1.21.0
-matplotlib>=3.4.0
-seaborn>=0.11.0
 scikit-learn>=1.0.0
+
+# Visualization
+matplotlib>=3.5.0
+seaborn>=0.11.0
+plotly>=5.0.0
+
+# Interactive dashboard
+dash>=2.0.0
+dash-bootstrap-components>=1.0.0
+
+# Advanced analytics
+scipy>=1.7.0
+networkx>=2.6.0
+xgboost>=1.5.0
+lightgbm>=3.3.0
+
+# Statistical analysis
+pingouin>=0.5.0
+shap>=0.40.0
+
+# Development
 jupyter>=1.0.0
 ```
 
@@ -133,13 +160,48 @@ Run `Titanic_ML_Predictor.ipynb` to:
 - Evaluate model performance
 - Use the interactive prediction interface
 
-### 3. Command-Line Predictor
+### 3. Advanced Statistical Analysis 🆕
+Open `Titanic_Advanced_Statistics.ipynb` for:
+- Confidence intervals and hypothesis testing
+- Effect size calculations (Cohen's d)
+- Bootstrap analysis for robust statistics
+- Advanced correlation analysis
+- Statistical significance testing
+
+### 4. Social Network Analysis 🆕
+Explore `Titanic_Social_Network_Analysis.ipynb` to analyze:
+- Family relationship networks
+- Travel group dynamics (ticket sharing)
+- Survival spillover effects
+- Name pattern analysis (ethnic/geographic clustering)
+- Network visualizations
+
+### 5. Advanced Ensemble ML Models 🆕
+Run `Titanic_Ensemble_ML_Models.ipynb` for:
+- Comprehensive model comparison (15+ algorithms)
+- Advanced ensemble methods (stacking, voting, blending)
+- Model interpretability analysis
+- Stability and robustness testing
+- Feature importance analysis
+
+### 6. Interactive Dashboard 🆕
+Launch the web dashboard:
+```bash
+python Titanic_Interactive_Dashboard.py
+```
+Then open: http://localhost:8050
+- Dynamic filtering and visualization
+- Real-time survival rate exploration
+- Interactive prediction interface
+- Multiple analysis perspectives
+
+### 7. Command-Line Predictor
 For quick predictions without Jupyter:
 ```bash
 python titanic_predictor.py
 ```
 
-### 4. Interactive Prediction Example
+### 8. Interactive Prediction Example
 ```python
 # In Jupyter notebook after running ML cells
 create_prediction_interface()
