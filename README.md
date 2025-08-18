@@ -59,13 +59,20 @@ This project provides a complete end-to-end machine learning solution for predic
 
 ```
 Titanic-Dataset/
-├── README.md                     # This file
-├── Titanic-Dataset.csv          # Original dataset
-├── Titanic_EDA.ipynb            # Comprehensive exploratory data analysis
-├── Titanic_ML_Predictor.ipynb   # Machine learning model and prediction system
-├── titanic_predictor.py         # Command-line prediction tool
-├── titanic_survival_model.pkl   # Trained model (generated after running)
-└── requirements.txt             # Python dependencies
+├── README.md                           # This file
+├── Titanic-Dataset.csv                # Original dataset
+├── Titanic_EDA.ipynb                  # Comprehensive exploratory data analysis
+├── Titanic_ML_Predictor.ipynb         # Machine learning model and prediction system
+├── Titanic_Advanced_Statistics.ipynb  # Advanced statistical analysis and hypothesis testing
+├── Titanic_Social_Network_Analysis.ipynb # Social network and group dynamics analysis
+├── Titanic_Ensemble_ML_Models.ipynb   # Advanced ensemble learning and model comparison
+├── Titanic_Interactive_Dashboard.py   # Interactive web dashboard with Plotly/Dash
+├── titanic_predictor.py               # Command-line prediction tool
+├── titanic_survival_model.pkl         # Trained model (generated after running)
+├── ensemble_model_results.csv         # Ensemble model comparison results
+├── requirements.txt                   # Python dependencies (enhanced)
+├── test_notebook_functions.py         # Testing functions
+└── test_plot.png                      # Sample visualization
 ```
 
 ## 🚀 Installation
