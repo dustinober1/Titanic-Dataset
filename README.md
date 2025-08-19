@@ -61,6 +61,7 @@ This project provides a complete end-to-end machine learning solution for predic
 - **Ensemble learning** with 15+ ML algorithms and advanced model selection
 - **Interactive dashboard** for dynamic data exploration
 - **Model interpretability** with feature importance and stability analysis
+- **Advanced feature engineering** with NLP, spatial analysis, and interaction modeling 🔬
 
 ## 📁 Project Structure
 
@@ -73,6 +74,7 @@ Titanic-Dataset/
 ├── Titanic_Advanced_Statistics.ipynb  # Advanced statistical analysis and hypothesis testing
 ├── Titanic_Social_Network_Analysis.ipynb # Social network and group dynamics analysis
 ├── Titanic_Ensemble_ML_Models.ipynb   # Advanced ensemble learning and model comparison
+├── Titanic_Advanced_Feature_Engineering.ipynb # NLP, spatial analysis & interaction modeling 🔬
 ├── Titanic_Interactive_Dashboard.py   # Interactive web dashboard with Plotly/Dash
 ├── titanic_predictor.py               # Command-line prediction tool
 ├── titanic_survival_model.pkl         # Trained model (generated after running)
@@ -184,7 +186,15 @@ Run `Titanic_Ensemble_ML_Models.ipynb` for:
 - Stability and robustness testing
 - Feature importance analysis
 
-### 6. Interactive Dashboard 🆕
+### 6. Advanced Feature Engineering 🔬
+Explore `Titanic_Advanced_Feature_Engineering.ipynb` for:
+- **NLP analysis** on passenger names for ethnic/geographic clustering
+- **Spatial analysis** of cabin positions and survival corridors
+- **Interaction effects** between social class and family dynamics
+- **Statistical feature selection** with multiple validation methods
+- **Domain expertise** in maritime disaster feature extraction
+
+### 7. Interactive Dashboard 🆕
 Launch the web dashboard:
 ```bash
 python Titanic_Interactive_Dashboard.py
@@ -195,13 +205,13 @@ Then open: http://localhost:8050
 - Interactive prediction interface
 - Multiple analysis perspectives
 
-### 7. Command-Line Predictor
+### 8. Command-Line Predictor
 For quick predictions without Jupyter:
 ```bash
 python titanic_predictor.py
 ```
 
-### 8. Interactive Prediction Example
+### 9. Interactive Prediction Example
 ```python
 # In Jupyter notebook after running ML cells
 create_prediction_interface()
@@ -233,6 +243,9 @@ print(f"Survival probability: {probability:.1%}")
    - **Age groups** (Child, Teen, Young Adult, Adult, Senior)
    - **Fare categories** (Very Low to Very High)
    - **Economic indicators** (fare per person, high fare binary)
+   - **Advanced NLP features** (ethnic clustering, name complexity, surname patterns)
+   - **Spatial cabin analysis** (deck hierarchy, proximity effects, survival corridors)
+   - **Complex interactions** (class-family dynamics, polynomial features)
 
 3. **Categorical Encoding**
    - Label encoding for ordinal features
@@ -317,6 +330,8 @@ The project includes an interactive prediction system where users can input thei
 - **Random Forest achieved best performance** through ensemble methods
 - **Feature engineering improved accuracy by ~5%**
 - **Cross-validation prevented overfitting** in model selection
+- **Advanced features reveal hidden patterns**: NLP analysis uncovered ethnic survival disparities, spatial analysis identified deck-based survival corridors, and interaction modeling captured complex class-family dynamics
+- **Multi-method feature selection** ensures robust feature identification with statistical rigor
 
 ## 🤝 Contributing
 
