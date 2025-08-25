@@ -86,6 +86,7 @@ Titanic-Dataset/
 │   │   ├── Titanic_Social_Network_Analysis.ipynb  # Network analysis
 │   │   ├── Titanic_Ensemble_ML_Models.ipynb       # Ensemble methods
 │   │   └── Titanic_Advanced_Feature_Engineering.ipynb # Feature engineering
+│   │   └── Titanic_Model_Interpretability.ipynb   # NEW: Model explainability (XAI)
 │   └── 04-experiments/                # Experimental notebooks
 │
 ├── src/                               # Source code modules
@@ -235,7 +236,14 @@ Explore `notebooks/03-advanced/Titanic_Advanced_Feature_Engineering.ipynb` for:
 - **Statistical feature selection** with multiple validation methods
 - **Domain expertise** in maritime disaster feature extraction
 
-### 7. Interactive Dashboard 🆕
+### 7. Model Interpretability (XAI) 🆕
+Dive into `notebooks/03-advanced/Titanic_Model_Interpretability.ipynb` to understand *why* the model makes its predictions:
+- **SHAP (SHapley Additive exPlanations)** for global and local explanations
+- **LIME (Local Interpretable Model-agnostic Explanations)** for instance-level insights
+- **Partial Dependence Plots (PDP)** to visualize feature effects
+- **Analysis of feature interactions** and their impact on survival
+
+### 8. Interactive Dashboard 🆕
 Launch the web dashboard:
 ```bash
 python scripts/Titanic_Interactive_Dashboard.py
