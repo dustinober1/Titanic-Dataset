@@ -1,0 +1,32 @@
+# Titanic Dataset Analysis Configuration
+
+data:
+  raw_data_path: "data/raw/Titanic-Dataset.csv"
+  processed_data_path: "data/processed/"
+  
+model:
+  output_path: "models/"
+  random_state: 42
+  test_size: 0.2
+  cv_folds: 5
+
+features:
+  target_column: "Survived"
+  categorical_features:
+    - "Sex"
+    - "Embarked" 
+    - "Pclass"
+  numerical_features:
+    - "Age"
+    - "Fare"
+    - "SibSp"
+    - "Parch"
+
+visualization:
+  figure_size: [12, 8]
+  style: "seaborn-v0_8"
+  color_palette: "Set2"
+  
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

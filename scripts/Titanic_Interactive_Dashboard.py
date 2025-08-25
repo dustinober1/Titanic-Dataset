@@ -31,7 +31,7 @@ def load_data_and_model():
     """Load Titanic data and trained model"""
     try:
         # Load dataset
-        df = pd.read_csv('Titanic-Dataset.csv')
+        df = pd.read_csv('../data/raw/Titanic-Dataset.csv')
         
         # Basic preprocessing
         df['Age'] = df['Age'].fillna(df['Age'].median())
@@ -44,7 +44,7 @@ def load_data_and_model():
         
         # Load trained model if available
         try:
-            with open('titanic_survival_model.pkl', 'rb') as f:
+            with open('../models/titanic_survival_model.pkl', 'rb') as f:
                 model_package = pickle.load(f)
             model = model_package['model']
             model_available = True
@@ -61,7 +61,7 @@ def load_data_and_model():
 df, model, model_available = load_data_and_model()
 
 if df is None:
-    print("Error: Could not load dataset. Make sure 'Titanic-Dataset.csv' is in the current directory.")
+    print("Error: Could not load dataset. Make sure '../data/raw/Titanic-Dataset.csv' exists.")
     exit()
 
 # Create dash app

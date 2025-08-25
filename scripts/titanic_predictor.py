@@ -19,7 +19,7 @@ class TitanicPredictor:
         self.encoders = {}
         self.is_trained = False
         
-    def load_and_prepare_data(self, filepath='Titanic-Dataset.csv'):
+    def load_and_prepare_data(self, filepath='../data/raw/Titanic-Dataset.csv'):
         """Load and preprocess the Titanic dataset"""
         print("📊 Loading Titanic dataset...")
         

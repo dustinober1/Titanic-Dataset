@@ -67,21 +67,57 @@ This project provides a complete end-to-end machine learning solution for predic
 
 ```
 Titanic-Dataset/
-├── README.md                           # This file
-├── Titanic-Dataset.csv                # Original dataset
-├── Titanic_EDA.ipynb                  # Comprehensive exploratory data analysis
-├── Titanic_ML_Predictor.ipynb         # Machine learning model and prediction system
-├── Titanic_Advanced_Statistics.ipynb  # Advanced statistical analysis and hypothesis testing
-├── Titanic_Social_Network_Analysis.ipynb # Social network and group dynamics analysis
-├── Titanic_Ensemble_ML_Models.ipynb   # Advanced ensemble learning and model comparison
-├── Titanic_Advanced_Feature_Engineering.ipynb # NLP, spatial analysis & interaction modeling 🔬
-├── Titanic_Interactive_Dashboard.py   # Interactive web dashboard with Plotly/Dash
-├── titanic_predictor.py               # Command-line prediction tool
-├── titanic_survival_model.pkl         # Trained model (generated after running)
-├── ensemble_model_results.csv         # Ensemble model comparison results
-├── requirements.txt                   # Python dependencies (enhanced)
-├── test_notebook_functions.py         # Testing functions
-└── test_plot.png                      # Sample visualization
+├── README.md                           # Project overview and documentation
+├── .gitignore                          # Git ignore rules
+│
+├── data/                              # Data storage
+│   ├── raw/                           # Original, immutable data
+│   │   └── Titanic-Dataset.csv        # Original Titanic dataset
+│   ├── processed/                     # Cleaned and preprocessed data
+│   └── external/                      # External datasets
+│
+├── notebooks/                         # Jupyter notebooks
+│   ├── 01-exploratory/                # Exploratory data analysis
+│   │   └── Titanic_EDA.ipynb          # Comprehensive EDA
+│   ├── 02-modeling/                   # Machine learning models
+│   │   └── Titanic_ML_Predictor.ipynb # ML model development
+│   ├── 03-advanced/                   # Advanced analysis
+│   │   ├── Titanic_Advanced_Statistics.ipynb      # Statistical analysis
+│   │   ├── Titanic_Social_Network_Analysis.ipynb  # Network analysis
+│   │   ├── Titanic_Ensemble_ML_Models.ipynb       # Ensemble methods
+│   │   └── Titanic_Advanced_Feature_Engineering.ipynb # Feature engineering
+│   └── 04-experiments/                # Experimental notebooks
+│
+├── src/                               # Source code modules
+│   ├── data/                          # Data processing modules
+│   ├── features/                      # Feature engineering
+│   ├── models/                        # Model classes and utilities
+│   ├── visualization/                 # Plotting utilities
+│   └── utils/                         # Helper functions
+│
+├── models/                            # Trained model artifacts
+│   └── titanic_survival_model.pkl     # Trained model
+│
+├── reports/                           # Generated analysis
+│   ├── figures/                       # Generated plots and visualizations
+│   │   └── test_plot.png              # Sample visualization
+│   └── results/                       # Model results and metrics
+│
+├── scripts/                           # Executable scripts
+│   ├── Titanic_Interactive_Dashboard.py  # Interactive web dashboard
+│   └── titanic_predictor.py           # Command-line prediction tool
+│
+├── tests/                             # Unit tests
+│   └── test_notebook_functions.py     # Testing functions
+│
+├── config/                            # Configuration files
+│   └── config.yaml                    # Project configuration
+│
+├── requirements/                      # Python dependencies
+│   ├── base.txt                       # Core dependencies
+│   └── dev.txt                        # Development dependencies
+│
+└── docs/                              # Documentation
 ```
 
 ## 🚀 Installation
@@ -107,7 +143,12 @@ Titanic-Dataset/
 
 3. **Install dependencies**
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirements/base.txt
+   ```
+   
+   For development:
+   ```bash
+   pip install -r requirements/dev.txt
    ```
 
 4. **Launch Jupyter Notebook**
@@ -148,7 +189,7 @@ jupyter>=1.0.0
 ## 💻 Usage
 
 ### 1. Exploratory Data Analysis
-Open and run `Titanic_EDA.ipynb` to explore:
+Open and run `notebooks/01-exploratory/Titanic_EDA.ipynb` to explore:
 - Dataset overview and statistics
 - Missing value analysis
 - Survival pattern visualization
@@ -156,14 +197,14 @@ Open and run `Titanic_EDA.ipynb` to explore:
 - Historical insights and context
 
 ### 2. Machine Learning Model
-Run `Titanic_ML_Predictor.ipynb` to:
+Run `notebooks/02-modeling/Titanic_ML_Predictor.ipynb` to:
 - Train and compare multiple ML models
 - Perform hyperparameter optimization
 - Evaluate model performance
 - Use the interactive prediction interface
 
 ### 3. Advanced Statistical Analysis 🆕
-Open `Titanic_Advanced_Statistics.ipynb` for:
+Open `notebooks/03-advanced/Titanic_Advanced_Statistics.ipynb` for:
 - Confidence intervals and hypothesis testing
 - Effect size calculations (Cohen's d)
 - Bootstrap analysis for robust statistics
@@ -171,7 +212,7 @@ Open `Titanic_Advanced_Statistics.ipynb` for:
 - Statistical significance testing
 
 ### 4. Social Network Analysis 🆕
-Explore `Titanic_Social_Network_Analysis.ipynb` to analyze:
+Explore `notebooks/03-advanced/Titanic_Social_Network_Analysis.ipynb` to analyze:
 - Family relationship networks
 - Travel group dynamics (ticket sharing)
 - Survival spillover effects
@@ -179,7 +220,7 @@ Explore `Titanic_Social_Network_Analysis.ipynb` to analyze:
 - Network visualizations
 
 ### 5. Advanced Ensemble ML Models 🆕
-Run `Titanic_Ensemble_ML_Models.ipynb` for:
+Run `notebooks/03-advanced/Titanic_Ensemble_ML_Models.ipynb` for:
 - Comprehensive model comparison (15+ algorithms)
 - Advanced ensemble methods (stacking, voting, blending)
 - Model interpretability analysis
@@ -187,7 +228,7 @@ Run `Titanic_Ensemble_ML_Models.ipynb` for:
 - Feature importance analysis
 
 ### 6. Advanced Feature Engineering 🔬
-Explore `Titanic_Advanced_Feature_Engineering.ipynb` for:
+Explore `notebooks/03-advanced/Titanic_Advanced_Feature_Engineering.ipynb` for:
 - **NLP analysis** on passenger names for ethnic/geographic clustering
 - **Spatial analysis** of cabin positions and survival corridors
 - **Interaction effects** between social class and family dynamics
@@ -197,7 +238,7 @@ Explore `Titanic_Advanced_Feature_Engineering.ipynb` for:
 ### 7. Interactive Dashboard 🆕
 Launch the web dashboard:
 ```bash
-python Titanic_Interactive_Dashboard.py
+python scripts/Titanic_Interactive_Dashboard.py
 ```
 Then open: http://localhost:8050
 - Dynamic filtering and visualization
@@ -208,7 +249,7 @@ Then open: http://localhost:8050
 ### 8. Command-Line Predictor
 For quick predictions without Jupyter:
 ```bash
-python titanic_predictor.py
+python scripts/titanic_predictor.py
 ```
 
 ### 9. Interactive Prediction Example
