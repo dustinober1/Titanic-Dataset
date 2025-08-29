@@ -1,0 +1,59 @@
+# 🐳 Titanic ML API - Development Docker Image
+# =============================================
+
+FROM python:3.9-slim
+
+# Metadata
+LABEL maintainer="Titanic ML Team"
+LABEL description="Development environment for Titanic Survival Prediction API"
+LABEL version="dev"
+
+# Set environment variables for development
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH="/app/src:/app" \
+    ENVIRONMENT=development \
+    API_HOST=0.0.0.0 \
+    API_PORT=8000
+
+# Install system dependencies including development tools
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        curl \
+        git \
+        vim \
+        htop \
+        && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /app
+
+# Copy requirements files
+COPY requirements/base.txt /app/requirements/base.txt
+COPY requirements/dev.txt /app/requirements/dev.txt
+COPY api/requirements.txt /app/api/requirements.txt
+
+# Install Python dependencies including development tools
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r requirements/base.txt \
+    && pip install --no-cache-dir -r requirements/dev.txt \
+    && pip install --no-cache-dir -r api/requirements.txt \
+    && pip install --no-cache-dir \
+        ipython \
+        jupyter \
+        jupyterlab \
+        ipywidgets \
+        debugpy
+
+# Copy application code (this will be overridden by volume mount in dev)
+COPY . /app/
+
+# Create necessary directories
+RUN mkdir -p /app/logs /app/data /app/models
+
+# Expose ports
+EXPOSE 8000 5678 8888
+
+# Default command for development with hot reload
+CMD ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "8000", "--reload", "--log-level", "debug"]

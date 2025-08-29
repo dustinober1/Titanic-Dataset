@@ -1,0 +1,128 @@
+# 🐳 Titanic ML - Development Docker Compose
+# ===========================================
+
+version: '3.8'
+
+services:
+  # Development API service with hot reload
+  titanic-api-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: titanic-ml-api-dev
+    ports:
+      - "8000:8000"
+      - "5678:5678"  # Debug port
+    environment:
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - ENVIRONMENT=development
+      - LOG_LEVEL=DEBUG
+      - RELOAD=true
+      - PYTHONPATH=/app/src:/app
+    volumes:
+      - .:/app                    # Mount source code for hot reload
+      - ./models:/app/models      # Mount models directory
+      - ./data:/app/data          # Mount data directory
+      - ./logs:/app/logs          # Mount logs directory
+    command: uvicorn api.app:app --host 0.0.0.0 --port 8000 --reload --log-level debug
+    restart: unless-stopped
+    networks:
+      - titanic-dev-network
+
+  # Jupyter notebook service for development
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: titanic-jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - PYTHONPATH=/app/src:/app
+    volumes:
+      - .:/app
+      - ./notebooks:/app/notebooks
+      - ./data:/app/data
+      - ./models:/app/models
+    command: >
+      bash -c "
+        pip install jupyter jupyterlab ipywidgets &&
+        jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root 
+        --NotebookApp.token='' --NotebookApp.password=''
+      "
+    restart: unless-stopped
+    networks:
+      - titanic-dev-network
+
+  # Development database for testing
+  postgres-dev:
+    image: postgres:15-alpine
+    container_name: titanic-postgres-dev
+    ports:
+      - "5433:5432"  # Different port to avoid conflicts
+    environment:
+      - POSTGRES_DB=titanic_dev
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=dev123
+    volumes:
+      - postgres-dev-data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    restart: unless-stopped
+    networks:
+      - titanic-dev-network
+
+  # Redis for development/testing
+  redis-dev:
+    image: redis:7-alpine
+    container_name: titanic-redis-dev
+    ports:
+      - "6380:6379"  # Different port to avoid conflicts
+    volumes:
+      - redis-dev-data:/data
+    restart: unless-stopped
+    networks:
+      - titanic-dev-network
+
+  # Mailhog for email testing (if needed)
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: titanic-mailhog
+    ports:
+      - "8025:8025"  # Web interface
+      - "1025:1025"  # SMTP server
+    restart: unless-stopped
+    networks:
+      - titanic-dev-network
+
+  # pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: titanic-pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@titanic.ml
+      - PGADMIN_DEFAULT_PASSWORD=admin123
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - postgres-dev
+    restart: unless-stopped
+    networks:
+      - titanic-dev-network
+
+# Networks
+networks:
+  titanic-dev-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  postgres-dev-data:
+    driver: local
+  redis-dev-data:
+    driver: local
+  pgadmin-data:
+    driver: local
